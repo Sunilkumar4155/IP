@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home | SIMATS Tech Symposium</title>
+<style>
+
+:root{--r:10px;box-sizing:border-box}
+:root,[data-theme="light"]{--bg:#f1f7f4;--ink:#13261f;--muted:#4c6159;--card:#fff;--line:#cfdcd5;--brand:#0f6b57;--brand-ink:#fff;--accent:#f0b429;--link:#0b5a48;--chip:#e6efe9;--bad:#b3261e;--good:#146c3b;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1714;--ink:#e6f0eb;--muted:#9bb2a9;--card:#15231e;--line:#2a3d36;--brand:#0f6b57;--brand-ink:#fff;--accent:#e8b94a;--link:#6fe0bd;--chip:#1f332b;--bad:#ff8a80;--good:#6fdc9d;}}
+[data-theme="dark"]{--bg:#0d1714;--ink:#e6f0eb;--muted:#9bb2a9;--card:#15231e;--line:#2a3d36;--brand:#0f6b57;--brand-ink:#fff;--accent:#e8b94a;--link:#6fe0bd;--chip:#1f332b;--bad:#ff8a80;--good:#6fdc9d;}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;line-height:1.2}
+h1{font-size:clamp(1.7rem,4vw,2.4rem);margin:.2em 0 .5em}
+a{color:var(--link)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--brand);color:#fff;padding:.5rem 1rem;z-index:9}.skip:focus{left:0}
+.brand{font:700 1.25rem Georgia,'Times New Roman',serif;color:var(--brand-ink);text-decoration:none}
+nav a{display:block;padding:.5rem .8rem;color:var(--brand-ink);text-decoration:none;font-weight:600;border-radius:var(--r)}
+nav a:hover{background:rgba(255,255,255,.18)}
+nav a.active{background:var(--accent);color:#1b1500}
+.themebtn{background:transparent;border:1px solid var(--brand-ink);color:var(--brand-ink);border-radius:var(--r);padding:.35rem .7rem;cursor:pointer;font:600 .85rem system-ui,sans-serif;margin:0}
+main{padding:1.5rem 1rem 2.5rem;max-width:920px;margin:0 auto;width:100%}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.3rem;margin-bottom:1rem}
+section>h1:first-child{margin-top:0}
+article{border-top:1px solid var(--line);padding-top:.6rem;margin-top:.8rem}
+article:first-of-type{border-top:0;margin-top:0}
+footer{text-align:center;padding:1.2rem;color:var(--muted);font-size:.9rem}
+label{display:block;margin-top:.9rem;font-weight:600}
+input,select,textarea{width:100%;max-width:440px;padding:.6rem;margin-top:.25rem;font:1rem system-ui,sans-serif;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:var(--r)}
+fieldset{border:1px solid var(--line);border-radius:var(--r);padding:.5rem 1rem 1rem;margin:0}
+button{background:var(--brand);color:var(--brand-ink);border:0;border-radius:var(--r);padding:.7rem 1.3rem;margin-top:1rem;font:600 1rem system-ui,sans-serif;cursor:pointer}
+button:hover{filter:brightness(1.1)}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.55rem .75rem;text-align:left}
+th{background:var(--brand);color:var(--brand-ink)}
+pre{background:#10161f;color:#d8e6ff;padding:.9rem;border-radius:var(--r);overflow-x:auto;white-space:pre-wrap;word-break:break-word;font-size:.85rem}
+code{background:var(--chip);padding:.05rem .3rem;border-radius:4px}
+pre code{background:none}
+.bad{border-left:6px solid var(--bad)}.good{border-left:6px solid var(--good)}
+.msg{margin-top:1rem;padding:.7rem 1rem;border:2px solid var(--good);border-radius:var(--r)}
+.err{border-color:var(--bad);color:var(--bad)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+body.layout-top header{background:var(--brand);padding:.7rem 1rem;padding-top:calc(.7rem + env(safe-area-inset-top,0px))}
+body.layout-top .bar{max-width:920px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem}
+body.layout-top nav{display:flex;flex-wrap:wrap;gap:.2rem}
+body.layout-top .tagline{max-width:920px;margin:.2rem auto 0;color:var(--brand-ink);opacity:.85;font-size:.9rem}
+.page{display:none}.page.active{display:block}
+</style>
+<script>
+(function(){
+var root=document.documentElement;
+try{var s=localStorage.getItem('theme');if(s)root.setAttribute('data-theme',s);}catch(e){}
+document.addEventListener('DOMContentLoaded',function(){
+  var b=document.getElementById('theme');if(!b)return;
+  b.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur)cur=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+    var next=cur==='dark'?'light':'dark';root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+});})();
+</script>
+</head>
+<body class="layout-top">
+<a class="skip" href="#main">Skip to main content</a>
+<header><div class="bar"><a class="brand" href="#/index">SIMATS Tech Symposium</a><nav aria-label="Main navigation">
+<a href="#/index" data-nav="index">Home</a>
+<a href="#/events" data-nav="events">Events</a>
+<a href="#/schedule" data-nav="schedule">Schedule</a>
+<a href="#/register" data-nav="register">Register</a>
+<a href="#/http" data-nav="http">HTTP cycle</a>
+<a href="#/contact" data-nav="contact">Contact</a>
+</nav><button type="button" id="theme" class="themebtn">Toggle dark mode</button></div><p class="tagline">Two days of papers, hackathons and workshops</p></header>
+<main id="main" tabindex="-1">
+<div class="page" id="page-index">
+<section><h1>Welcome to the Symposium</h1>
+<p>SIMATS Tech Symposium 2026 is a two-day event on 14 and 15 November with paper presentations, a hackathon, workshops and a project expo.</p>
+<p><a href="#/register">Register now</a></p></section>
+</div>
+<div class="page" id="page-events">
+<section><h1>Events</h1>
+<article><h3>Paper Presentation</h3><p>Present a 7-minute talk on your research.</p></article>
+<article><h3>Hackathon</h3><p>Build a working prototype in 24 hours.</p></article>
+<article><h3>Web Design Challenge</h3><p>Code a responsive page from a brief.</p></article>
+<article><h3>Tech Quiz</h3><p>Teams of two answer questions on programming and networks.</p></article></section>
+</div>
+<div class="page" id="page-schedule">
+<section><h1>Schedule</h1>
+<table><caption>Programme</caption>
+<thead><tr><th scope="col">Day</th><th scope="col">Time</th><th scope="col">Session</th><th scope="col">Venue</th></tr></thead>
+<tbody>
+<tr><td>Day 1</td><td>9:00 AM</td><td>Inauguration</td><td>Main Auditorium</td></tr>
+<tr><td>Day 1</td><td>10:30 AM</td><td>Paper Presentation</td><td>Seminar Hall A</td></tr>
+<tr><td>Day 2</td><td>9:30 AM</td><td>Web Design Challenge</td><td>Lab 1</td></tr>
+<tr><td>Day 2</td><td>4:30 PM</td><td>Prize distribution</td><td>Main Auditorium</td></tr>
+</tbody></table></section>
+</div>
+<div class="page" id="page-register">
+<section><h1>Register</h1>
+<form id="regform" action="/register" method="POST">
+<fieldset>
+<legend>Your details</legend>
+<label for="name">Full name</label>
+<input type="text" id="name" name="name" autocomplete="name" required minlength="3">
+<label for="email">Email address</label>
+<input type="email" id="email" name="email" autocomplete="email" required placeholder="you@college.edu">
+</fieldset>
+<button type="submit">Submit</button>
+</form>
+<div id="result" aria-live="polite"></div></section>
+</div>
+<div class="page" id="page-http">
+<section><h1>HTTP request and response</h1>
+<h3>Missing semantic elements (Q1.1)</h3>
+<p>The original form has no <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;fieldset&gt;</code> or <code>&lt;label&gt;</code>. This site adds them.</p>
+<h3>Request (Q1.3)</h3><pre>POST /register HTTP/1.1
+Host: symposium.example.edu
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 41
+
+name=Priya+Raman&amp;email=priya%40college.edu</pre>
+<p>POST sends the data in the body. The headers tell the server the content type and size.</p>
+<h3>Response cycle (Q1.4)</h3>
+<ol>
+<li>The user clicks Submit and the browser builds the request.</li>
+<li>The browser opens a connection (DNS lookup, TCP, TLS) and sends it.</li>
+<li>The server reads the form data, validates it and saves the registration.</li>
+<li>The server sends a response with a status line, headers and a body.</li>
+<li>The browser reads the status and renders the confirmation page.</li>
+</ol><pre>HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+
+&lt;h1&gt;Registration received&lt;/h1&gt;</pre>
+<h3>Usability and accessibility (Q1.5)</h3>
+<ul>
+<li>Add labels to every input and use correct input types.</li>
+<li>Add <code>required</code>, <code>autocomplete</code> and clear error messages.</li>
+<li>Show a confirmation message after submitting.</li>
+<li>Keep keyboard focus visible and use good colour contrast.</li>
+<li>Use a responsive layout and HTTPS.</li>
+</ul></section>
+</div>
+<div class="page" id="page-contact">
+<section><h1>Contact</h1>
+<address>Department of Computer Science<br>SIMATS Engineering, Chennai<br>Email: symposium@example.edu</address></section>
+</div>
+</main>
+<footer><p>&copy; 2026 SIMATS Tech Symposium</p></footer>
+<script>
+
+document.getElementById('regform').addEventListener('submit', function (e) {
+  e.preventDefault(); // demo only: no server is running
+  var name = this.name.value.trim(), email = this.email.value.trim();
+  var box = document.getElementById('result');
+  if (name.length < 3 || email.indexOf('@') < 1) {
+    box.className = 'msg err';
+    box.textContent = 'Enter your full name and a valid email address.';
+    return;
+  }
+  box.className = 'msg';
+  box.innerHTML = '<b>Registration received, ' + name.replace(/</g,'&lt;') + '.</b><br>The browser would send:<pre>POST /register HTTP/1.1\nContent-Type: application/x-www-form-urlencoded\n\nname=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '</pre>';
+});
+
+</script>
+<script>
+(function(){
+  var pages=['index', 'events', 'schedule', 'register', 'http', 'contact'], labels=['Home', 'Events', 'Schedule', 'Register', 'HTTP cycle', 'Contact'], brand="SIMATS Tech Symposium";
+  var links=document.querySelectorAll('nav a[data-nav]');
+  function route(){
+    var key=(location.hash||'').replace(/^#\/?/,'')||pages[0];
+    if(pages.indexOf(key)<0) key=pages[0];
+    for(var i=0;i<pages.length;i++){
+      var p=document.getElementById('page-'+pages[i]);
+      if(p) p.classList.toggle('active',pages[i]===key);
+    }
+    for(var j=0;j<links.length;j++){
+      if(links[j].getAttribute('data-nav')===key){links[j].classList.add('active');links[j].setAttribute('aria-current','page');}
+      else{links[j].classList.remove('active');links[j].removeAttribute('aria-current');}
+    }
+    document.title=labels[pages.indexOf(key)]+' | '+brand;
+    window.scrollTo(0,0);
+    if(window.__onRoute) window.__onRoute(key);
+  }
+  window.addEventListener('hashchange',route);
+  route();
+})();
+</script>
+</body>
+</html>
